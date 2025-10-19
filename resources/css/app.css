@@ -1,3 +1,75 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+	:root {
+		color-scheme: light;
+	}
+
+	html {
+		@apply scroll-smooth;
+	}
+
+	body {
+		@apply bg-slate-100 text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100;
+	}
+
+	[x-cloak] {
+		display: none !important;
+	}
+}
+
+@layer components {
+	.page-shell {
+		@apply min-h-screen bg-gradient-to-br from-slate-100 via-slate-200 to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950;
+	}
+
+	.glass-panel {
+		@apply bg-white/80 dark:bg-slate-900/60 border border-slate-200/70 dark:border-slate-800/60 shadow-lg shadow-slate-900/10 backdrop-blur;
+	}
+
+	.surface-card {
+		@apply glass-panel rounded-2xl;
+	}
+
+	.surface-section {
+		@apply glass-panel rounded-xl;
+	}
+
+	.muted-text {
+		@apply text-sm text-slate-500 dark:text-slate-400;
+	}
+
+	.badge-soft {
+		@apply inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wide;
+	}
+
+	.table-container {
+		@apply glass-panel rounded-2xl overflow-hidden;
+	}
+
+	.table-heading {
+		@apply bg-slate-100/60 text-slate-600 dark:bg-slate-900/50 dark:text-slate-300 uppercase text-xs tracking-wider font-semibold;
+	}
+
+	.form-field {
+		@apply mt-1 block w-full rounded-xl border border-slate-300/70 bg-white/90 text-sm text-slate-900 placeholder-slate-400 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:border-slate-700/70 dark:bg-slate-900/70 dark:text-slate-100 dark:placeholder-slate-500;
+	}
+
+	.card-title {
+		@apply text-lg font-semibold text-slate-900 dark:text-white;
+	}
+
+	.card-subtitle {
+		@apply text-sm text-slate-500 dark:text-slate-400;
+	}
+}
+
+@layer utilities {
+	.grid-overlay {
+		background-image: radial-gradient(currentColor 1px, transparent 0);
+		background-size: 40px 40px;
+		@apply text-slate-300/50 dark:text-slate-700/70 pointer-events-none;
+	}
+}

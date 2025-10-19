@@ -20,12 +20,15 @@ Route::middleware(['auth'])->group(function () {
 
     // ✅ Common routes for all logged-in users
     Route::resource('tasks', TaskController::class);
-    Route::resource('categories', CategoryController::class)->only(['index','show']);
 
-    // ✅ Admin-only routes
-    Route::middleware(['admin'])->group(function () {
-        Route::resource('categories', CategoryController::class)->except(['index','show']);
-    });
+    Route::resource('categories', CategoryController::class)
+        ->middleware([
+            'create' => 'admin',
+            'store' => 'admin',
+            'edit' => 'admin',
+            'update' => 'admin',
+            'destroy' => 'admin',
+        ]);
 });
 
 require __DIR__.'/auth.php';
